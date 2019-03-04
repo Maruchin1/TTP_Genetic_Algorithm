@@ -20,3 +20,14 @@ C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.pdb
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.deps.json
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.json
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.dev.json
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.dll
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.pdb
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csprojAssemblyReference.cache
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csproj.CoreCompileInputs.cache
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfoInputs.cache
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfo.cs
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
+C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb

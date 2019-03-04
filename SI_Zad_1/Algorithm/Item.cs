@@ -13,7 +13,15 @@ namespace SI_Zad_1.Algorithm
 
         public override string ToString()
         {
-            return $"Index = {Index} | Profit = {Profit} | Weight = {Weight} | CityNumber = {CityNumber}";
+            var builder = new StringBuilder();
+            builder.Append($"Index = {Index}".PadRight(15, ' '));
+            builder.Append(" | ");
+            builder.Append($"Profit = {Profit}".PadRight(15, ' '));
+            builder.Append(" | ");
+            builder.Append($"Weight = {Weight}".PadRight(15, ' '));
+            builder.Append(" | ");
+            builder.Append($"CityNumber = {CityNumber}".PadRight(15, ' '));
+            return builder.ToString();
         }
     }
 }

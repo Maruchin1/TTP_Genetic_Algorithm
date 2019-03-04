@@ -9,7 +9,7 @@ namespace SI_Zad_1
         static void Main(string[] args)
         {
             var test = new Test();
-            test.start();
+            test.Start();
 
             ReadLine();
         }

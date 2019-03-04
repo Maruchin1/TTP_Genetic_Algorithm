@@ -8,7 +8,7 @@ namespace SI_Zad_1.Algorithm
 {
     class Test
     {
-        public void start()
+        public void Start()
         {
             WriteLine("Program start");
             var loader = new Loader();
