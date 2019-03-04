@@ -26,7 +26,7 @@ namespace SI_Zad_1.Algorithm
             foreach (var specimen in population)
             {
                 WriteLine($"specimen = {specimen}");
-                WriteLine($"first = {specimen.CitiesSequence[0]}");
+                WriteLine($"totalTime = {specimen.CalculateTotalTime()}");
             }
         }
 

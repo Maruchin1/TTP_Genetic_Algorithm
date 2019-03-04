@@ -14,6 +14,8 @@ namespace SI_Zad_1.Algorithm
 
         public Data(double minSpeed, double maxSpeed, City[] cities, Item[] items)
         {
+            MinSpeed = minSpeed;
+            MaxSpeed = maxSpeed;
             Cities = cities;
             Items = items;
             var builder = new DistanceMatrixBuilder();

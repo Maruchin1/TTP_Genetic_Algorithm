@@ -20,7 +20,7 @@ namespace SI_Zad_1.Algorithm
         {
             var totalTime = 0d;
 
-            for (var i = 0; i < CitiesSequence.Length; i++)
+            for (var i = 0; i < CitiesSequence.Length-1; i++)
             {
                 var currCityIndex = CitiesSequence[i];
                 var nextCityIndex = CitiesSequence[i + 1];
@@ -39,7 +39,7 @@ namespace SI_Zad_1.Algorithm
 
         private double CalculateTime(int firstCityIndex, int secondCityIndex)
         {
-            var distance = Data.DistanceMatrix[firstCityIndex, secondCityIndex];
+            var distance = Data.DistanceMatrix[firstCityIndex-1, secondCityIndex-1];
             //todo prędkość ma być potem wyliczana na bierząco 
             var speed = Data.MaxSpeed;
             return distance / speed;

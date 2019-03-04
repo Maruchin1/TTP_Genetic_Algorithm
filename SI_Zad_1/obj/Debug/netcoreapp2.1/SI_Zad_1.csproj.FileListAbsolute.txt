@@ -9,14 +9,14 @@ C:\Users\marci\Desktop\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.Assemb
 C:\Users\marci\Desktop\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfo.cs
 C:\Users\marci\Desktop\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
 C:\Users\marci\Desktop\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb
+C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.dll
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.deps.json
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.json
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.dev.json
-C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.dll
-C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.pdb
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csprojAssemblyReference.cache
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csproj.CoreCompileInputs.cache
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfoInputs.cache
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfo.cs
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
 C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb
+C:\Users\marci\Desktop\Nowy folder (3)\SI_Zad_1\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.pdb
