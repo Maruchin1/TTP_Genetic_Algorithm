@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using SI_Zad_1.DataLoading;
 using static System.Console;
@@ -8,29 +9,42 @@ namespace SI_Zad_1.Algorithm
 {
     class Test
     {
+        private const string FileName = FilesNames.Trivial0;
+        private const int PopulationSize = 10;
+
         public void Start()
         {
-            WriteLine("Program start");
+            var data = LoadData();
+            WriteLine($"data:\n{data}");
+            var population = GeneratePopulation(PopulationSize, data);
+            CalculateSpecimensValues(population, data);
+        }
+
+        private void CalculateSpecimensValues(IEnumerable<Specimen> population, Data data)
+        {
+            var classifier = new SpecimenClassifier(data);
+            foreach (var specimen in population)
+            {
+                specimen.Value = classifier.CalculateSpecimenValue(specimen);
+                WriteLine($"Specimen ------------------------------------------");
+                WriteLine(specimen.ToString());
+            }
+        }
+        private Data LoadData()
+        {
             var loader = new Loader();
-            var loadedData = loader.LoadData(FilesNames.Trivial0);
+            var loadedData = loader.LoadData(FileName);
             var data = new Data(
+                loadedData.CapacityOfKnapsack,
                 loadedData.MinSpeed,
                 loadedData.MaxSpeed,
                 loadedData.Cities.ToArray(),
                 loadedData.Items.ToArray()
             );
-            WriteLine($"data:\n{data}");
-
-            var population = GeneratePopulation(10, data);
-            WriteLine("population:");
-            foreach (var specimen in population)
-            {
-                WriteLine($"specimen = {specimen}");
-                WriteLine($"totalTime = {specimen.CalculateTotalTime()}");
-            }
+            return data;
         }
 
-        private Specimen[] GeneratePopulation(int size, Data data)
+        private IEnumerable<Specimen> GeneratePopulation(int size, Data data)
         {
             var population = new Specimen[size];
             for (var i = 0; i < population.Length; i++)

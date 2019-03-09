@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SI_Zad_1.Algorithm
 {
-    class Item
+    public class Item
     {
         public int Index { get; set; }
         public int Profit { get; set; }

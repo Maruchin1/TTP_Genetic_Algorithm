@@ -4,16 +4,18 @@ using System.Text;
 
 namespace SI_Zad_1.Algorithm
 {
-    class Data
+    public class Data
     {
+        public int CapacityOfKnapsack { get; set; }
         public double MinSpeed { get; set; }
         public double MaxSpeed { get; set; }
         public City[] Cities { get; set; }
         public Item[] Items { get; set; }
         public double[,] DistanceMatrix { get; set; }
 
-        public Data(double minSpeed, double maxSpeed, City[] cities, Item[] items)
+        public Data(int capacityOfKnapsack, double minSpeed, double maxSpeed, City[] cities, Item[] items)
         {
+            CapacityOfKnapsack = capacityOfKnapsack;
             MinSpeed = minSpeed;
             MaxSpeed = maxSpeed;
             Cities = cities;

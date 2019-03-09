@@ -5,74 +5,100 @@ using System.Text;
 
 namespace SI_Zad_1.Algorithm
 {
-    class Specimen
+    public class Specimen
     {
         public Data Data { get; set; }
-        public int[] CitiesSequence { get; set; }
+        public City[] CitiesSequence { get; set; }
 
-        public Specimen(Data data)
+        public Item[] ItemsSequence { get; set; }
+
+        public double Value { get; set; }
+
+        public Specimen(Data data, City[] citiesSequence)
         {
             Data = data;
-            CitiesSequence = new int[Data.Cities.Length];
-        }
-
-        public double CalculateTotalTime()
+            CitiesSequence = citiesSequence;
+            ItemsSequence = MakeItemsSequence();
+        } 
+        
+        private Item[] MakeItemsSequence()
         {
-            var totalTime = 0d;
-
-            for (var i = 0; i < CitiesSequence.Length-1; i++)
+            var itemsSequence = new Item[CitiesSequence.Length];
+            var knapsackItemsWeight = 0;
+            for (var i = 0; i < CitiesSequence.Length; i++)
             {
-                var currCityIndex = CitiesSequence[i];
-                var nextCityIndex = CitiesSequence[i + 1];
-
-                var time = CalculateTime(currCityIndex, nextCityIndex);
-                totalTime += time;
+                var cityIndex = CitiesSequence[i].Index;
+                var itemsInCity = Data.Items.Where(item => item.CityNumber == cityIndex).ToList();
+                if (itemsInCity.Count > 0)
+                {
+                    var pickedItem = FindBiggestValueItem(itemsInCity);
+                    if (knapsackItemsWeight + pickedItem.Weight <= Data.CapacityOfKnapsack)
+                    {
+                        itemsSequence[i] = pickedItem;
+                        knapsackItemsWeight += pickedItem.Weight;
+                    }   
+                }
             }
 
-            var lastCityIndex = CitiesSequence[CitiesSequence.Length - 1];
-            var firstCityIndex = CitiesSequence[0];
-            var returnTime = CalculateTime(lastCityIndex, firstCityIndex);
-            totalTime += returnTime;
-
-            return totalTime;
+            return itemsSequence;
         }
 
-        private double CalculateTime(int firstCityIndex, int secondCityIndex)
+        private Item FindBiggestValueItem(IEnumerable<Item> items)
         {
-            var distance = Data.DistanceMatrix[firstCityIndex-1, secondCityIndex-1];
-            //todo prędkość ma być potem wyliczana na bierząco 
-            var speed = Data.MaxSpeed;
-            return distance / speed;
+            return items.OrderByDescending(item => item.Profit).First();
+        }
+
+        private Item FindSmallestWeightItem(IEnumerable<Item> items)
+        {
+            return items.OrderBy(item => item.Weight).First();
         }
 
         public static Specimen GenerateRandom(Data data)
         {
-            var specimen = new Specimen(data);
-            var sequenceLength = specimen.CitiesSequence.Length;
-            var possibleValues = Enumerable.Range(1, sequenceLength).ToList();
-
+            var sequenceLength = data.Cities.Length;
+            var citiesSequence = new City[sequenceLength];
+            var possibleValues = data.Cities.ToList();
             for (var i = 0; i < sequenceLength; i++)
             {
                 var rand = new Random();
                 var randomIndex = rand.Next(0, possibleValues.Count);
-                specimen.CitiesSequence[i] = possibleValues[randomIndex];
+                citiesSequence[i] = possibleValues[randomIndex];
                 possibleValues.RemoveAt(randomIndex);
             }
 
-            return specimen;
+            return new Specimen(data, citiesSequence);
         }
 
         public override string ToString()
         {
             var builder = new StringBuilder();
-            builder.Append("|");
-            foreach (var cityIndex in CitiesSequence)
+            builder.Append("Cities sequence:");
+            builder.Append("\n|");
+            foreach (var city in CitiesSequence)
             {
+                builder.Append(city.Index);
                 builder.Append("|");
-                builder.Append(cityIndex);
             }
-            builder.Append("|");
+            
+            builder.Append("\nItems sequence:");
+            builder.Append("\n|");
+            foreach (var item in ItemsSequence)
+            {
+                if (item != null)
+                {
+                    builder.Append(item.Index);
+                }
+                else
+                {
+                    builder.Append("null");
+                }
 
+                builder.Append("|");
+            }
+
+            builder.Append("\nValue = ");
+            builder.Append(Value);
+            
             return builder.ToString();
         }
     }

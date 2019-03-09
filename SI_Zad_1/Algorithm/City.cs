@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SI_Zad_1.Algorithm
 {
-    class City
+    public class City
     {
         public int Index { get; set; }
         public double CoordX { get; set; }
