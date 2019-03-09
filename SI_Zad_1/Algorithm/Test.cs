@@ -18,6 +18,7 @@ namespace SI_Zad_1.Algorithm
             WriteLine($"data:\n{data}");
             var population = GeneratePopulation(PopulationSize, data);
             CalculateSpecimensValues(population, data);
+            population[population.Length-1].Mutate();
         }
 
         private void CalculateSpecimensValues(IEnumerable<Specimen> population, Data data)
@@ -44,7 +45,7 @@ namespace SI_Zad_1.Algorithm
             return data;
         }
 
-        private IEnumerable<Specimen> GeneratePopulation(int size, Data data)
+        private Specimen[] GeneratePopulation(int size, Data data)
         {
             var population = new Specimen[size];
             for (var i = 0; i < population.Length; i++)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static System.Console;
 
 namespace SI_Zad_1.Algorithm
 {
@@ -19,7 +20,30 @@ namespace SI_Zad_1.Algorithm
             Data = data;
             CitiesSequence = citiesSequence;
             ItemsSequence = MakeItemsSequence();
-        } 
+        }
+
+        public void Mutate()
+        {
+            var possibleValues = Enumerable.Range(0, CitiesSequence.Length).ToList();
+            var firstIndexToSwap = GetRandomValue(possibleValues);
+            var secondIndexToSwap = GetRandomValue(possibleValues);
+
+            var temp = CitiesSequence[firstIndexToSwap];
+            CitiesSequence[firstIndexToSwap] = CitiesSequence[secondIndexToSwap];
+            CitiesSequence[secondIndexToSwap] = temp;
+            
+            WriteLine("Specimen after mutation:");
+            WriteLine(ToString());
+        }
+
+        private int GetRandomValue(IList<int> possibleValues)
+        {
+            var rand = new Random();
+            var randomIndex = rand.Next(possibleValues.Count);
+            var randomValue = possibleValues[randomIndex];
+            possibleValues.RemoveAt(randomIndex);
+            return randomValue;
+        }
         
         private Item[] MakeItemsSequence()
         {
