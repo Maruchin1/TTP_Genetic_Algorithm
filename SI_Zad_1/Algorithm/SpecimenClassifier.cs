@@ -15,7 +15,7 @@ namespace SI_Zad_1.Algorithm
         public double CalculateSpecimenValue(Specimen specimen)
         {
             var totalProfit = CalculateTotalItemsProfit(specimen.ItemsSequence);
-            var totalTime = CalculateTotalTime(specimen.CitiesSequence, specimen.ItemsSequence);
+            var totalTime = CalculateTotalTime(specimen.CitiesIndexSequence, specimen.ItemsSequence);
 
             return totalProfit - totalTime;
         }
@@ -25,21 +25,21 @@ namespace SI_Zad_1.Algorithm
             return itemsSequence.Where(item => item != null).Sum(item => item.Profit);
         }
         
-        private double CalculateTotalTime(IReadOnlyList<City> citiesSequence, IReadOnlyList<Item> itemsSequence)
+        private double CalculateTotalTime(IReadOnlyList<int> citiesIndexSequence, IReadOnlyList<Item> itemsSequence)
         {
             var totalTime = 0d;
 
-            for (var i = 0; i < citiesSequence.Count - 1; i++)
+            for (var i = 0; i < citiesIndexSequence.Count - 1; i++)
             {
-                var currCityIndex = citiesSequence[i].Index;
-                var nextCityIndex = citiesSequence[i + 1].Index;
+                var currCityIndex = citiesIndexSequence[i];
+                var nextCityIndex = citiesIndexSequence[i + 1];
 
                 var time = CalculateTime(currCityIndex, nextCityIndex, itemsSequence);
                 totalTime += time;
             }
 
-            var lastCityIndex = citiesSequence[citiesSequence.Count - 1].Index;
-            var firstCityIndex = citiesSequence[0].Index;
+            var lastCityIndex = citiesIndexSequence[citiesIndexSequence.Count - 1];
+            var firstCityIndex = citiesIndexSequence[0];
             var returnTime = CalculateTime(lastCityIndex, firstCityIndex, itemsSequence);
             totalTime += returnTime;
 

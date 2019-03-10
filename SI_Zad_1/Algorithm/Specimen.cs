@@ -9,28 +9,28 @@ namespace SI_Zad_1.Algorithm
     public class Specimen
     {
         public Data Data { get; set; }
-        public City[] CitiesSequence { get; set; }
+        public int[] CitiesIndexSequence { get; set; }
 
         public Item[] ItemsSequence { get; set; }
 
         public double Value { get; set; }
 
-        public Specimen(Data data, City[] citiesSequence)
+        public Specimen(Data data, int[] citiesIndexSequence)
         {
             Data = data;
-            CitiesSequence = citiesSequence;
+            CitiesIndexSequence = citiesIndexSequence;
             ItemsSequence = MakeItemsSequence();
         }
 
         public void Mutate()
         {
-            var possibleValues = Enumerable.Range(0, CitiesSequence.Length).ToList();
+            var possibleValues = Enumerable.Range(0, CitiesIndexSequence.Length).ToList();
             var firstIndexToSwap = GetRandomValue(possibleValues);
             var secondIndexToSwap = GetRandomValue(possibleValues);
 
-            var temp = CitiesSequence[firstIndexToSwap];
-            CitiesSequence[firstIndexToSwap] = CitiesSequence[secondIndexToSwap];
-            CitiesSequence[secondIndexToSwap] = temp;
+            var temp = CitiesIndexSequence[firstIndexToSwap];
+            CitiesIndexSequence[firstIndexToSwap] = CitiesIndexSequence[secondIndexToSwap];
+            CitiesIndexSequence[secondIndexToSwap] = temp;
             
             WriteLine("Specimen after mutation:");
             WriteLine(ToString());
@@ -47,11 +47,11 @@ namespace SI_Zad_1.Algorithm
         
         private Item[] MakeItemsSequence()
         {
-            var itemsSequence = new Item[CitiesSequence.Length];
+            var itemsSequence = new Item[CitiesIndexSequence.Length];
             var knapsackItemsWeight = 0;
-            for (var i = 0; i < CitiesSequence.Length; i++)
+            for (var i = 0; i < CitiesIndexSequence.Length; i++)
             {
-                var cityIndex = CitiesSequence[i].Index;
+                var cityIndex = CitiesIndexSequence[i];
                 var itemsInCity = Data.Items.Where(item => item.CityNumber == cityIndex).ToList();
                 if (itemsInCity.Count > 0)
                 {
@@ -80,17 +80,17 @@ namespace SI_Zad_1.Algorithm
         public static Specimen GenerateRandom(Data data)
         {
             var sequenceLength = data.Cities.Length;
-            var citiesSequence = new City[sequenceLength];
+            var citiesIndexSequence = new int[sequenceLength];
             var possibleValues = data.Cities.ToList();
             for (var i = 0; i < sequenceLength; i++)
             {
                 var rand = new Random();
                 var randomIndex = rand.Next(0, possibleValues.Count);
-                citiesSequence[i] = possibleValues[randomIndex];
+                citiesIndexSequence[i] = possibleValues[randomIndex].Index;
                 possibleValues.RemoveAt(randomIndex);
             }
 
-            return new Specimen(data, citiesSequence);
+            return new Specimen(data, citiesIndexSequence);
         }
 
         public override string ToString()
@@ -98,9 +98,9 @@ namespace SI_Zad_1.Algorithm
             var builder = new StringBuilder();
             builder.Append("Cities sequence:");
             builder.Append("\n|");
-            foreach (var city in CitiesSequence)
+            foreach (var cityIndex in CitiesIndexSequence)
             {
-                builder.Append(city.Index);
+                builder.Append(cityIndex);
                 builder.Append("|");
             }
             

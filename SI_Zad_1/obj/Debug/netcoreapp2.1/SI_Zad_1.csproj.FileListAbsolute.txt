@@ -31,3 +31,14 @@ C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcorea
 C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfo.cs
 C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
 C:\Users\Marcin\Desktop\Studia\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.deps.json
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.json
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.runtimeconfig.dev.json
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.dll
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\bin\Debug\netcoreapp2.1\SI_Zad_1.pdb
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csprojAssemblyReference.cache
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.csproj.CoreCompileInputs.cache
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfoInputs.cache
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.AssemblyInfo.cs
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.dll
+D:\Studia\6 semestr\SI\Cw 1\TTP_Genetic_Algorithm\SI_Zad_1\obj\Debug\netcoreapp2.1\SI_Zad_1.pdb
