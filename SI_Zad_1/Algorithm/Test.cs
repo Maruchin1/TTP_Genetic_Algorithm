@@ -1,44 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using SI_Zad_1.DataLoading;
-using SI_Zad_1.Operators;
+﻿using SI_Zad_1.DataLoading;
 using static System.Console;
 
 namespace SI_Zad_1.Algorithm
 {
     class Test
     {
-        private const string FileName = FilesNames.Trivial0;
-        private const int PopulationSize = 6;
-        private const int GenerationsNumber = 1;
-
         public void Start()
         {
             var data = LoadData();
-            WriteLine($"data:\n{data}");
-            
             var operators = new GeneticOperators(data);
-            var population = operators.GeneratePopulation(PopulationSize);
+            var population = operators.GeneratePopulation(Config.PopulationSize);
             operators.CalculateSpecimensValues(population);
-            operators.PrintPopulation(population);
             
-            for (var i = 0; i < GenerationsNumber; i++)
+            for (var i = 0; i < Config.GenerationsNumber; i++)
             {
                 var selectedSpecimens = operators.TourSelection(population);
                 var newPopulation = operators.Crossover(selectedSpecimens);
                 operators.Mutation(newPopulation);
                 operators.CalculateSpecimensValues(newPopulation);
-                WriteLine($"Generation = {i}");
-                operators.PrintPopulation(newPopulation);
+                operators.PrintStats(newPopulation, i);
+                population = newPopulation;
             }
         }
 
         private Data LoadData()
         {
             var loader = new Loader();
-            var loadedData = loader.LoadData(FileName);
+            var loadedData = loader.LoadData(Config.FileName);
             var data = new Data(
                 loadedData.CapacityOfKnapsack,
                 loadedData.MinSpeed,

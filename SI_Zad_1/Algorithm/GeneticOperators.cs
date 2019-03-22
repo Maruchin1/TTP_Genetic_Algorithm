@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using SI_Zad_1.Operators;
 using static System.Console;
 
@@ -8,25 +10,39 @@ namespace SI_Zad_1.Algorithm
 {
     public class GeneticOperators
     {
-        private const double CrossProb = 0.7;
-        private const double MutationProb = 0.01;
-        private const int TourSize = 5;
         private readonly Data _data;
 
         public GeneticOperators(Data data)
         {
             _data = data;
         }
-
-        public void PrintPopulation(Specimen[] population)
+        
+        public void PrintStats(Specimen[] population, int generation)
         {
-            WriteLine($"Population -----------------------------------------------");
-            foreach (var specimen in population)
-            {
-                WriteLine($"Specimen --------------");
-                WriteLine(specimen.ToString());
-            }
+            var ranking = population.OrderByDescending(specimen => specimen.Value).ToArray();
+            var best = ranking.First().Value;
+            var worst = ranking.Last().Value;
+            var average = ranking.Average(specimen => specimen.Value);
+            
+            var builder = new StringBuilder();
+            builder.Append("Gen: ");
+            builder.Append(generation);
+            builder.Append(" | Best: ");
+            builder.Append(best.ToString("0.##"));
+            builder.Append(" | Avg: ");
+            builder.Append(average.ToString("0.##"));
+            builder.Append(" | Worst: ");
+            builder.Append(worst.ToString("0.##"));
+            
+            WriteLine(builder.ToString());
         }
+        
+        public void PrintBest(Specimen[] population)
+        {
+            var best = population.OrderByDescending(specimen => specimen.Value).First();
+            WriteLine($"Best = {best.Value}");
+        }
+        
         public Specimen[] GeneratePopulation(int size)
         {
             var population = new Specimen[size];
@@ -53,7 +69,7 @@ namespace SI_Zad_1.Algorithm
 
             for (var i = 0; i < selectedSpecimens.Length; i++)
             {
-                var randomSpecimens = GetRandomSpecimens(TourSize, population);
+                var randomSpecimens = GetRandomSpecimens(Config.TourSize, population);
                 var bestSpecimen = randomSpecimens.OrderByDescending(specimen => specimen.Value).First();
                 selectedSpecimens[i] = bestSpecimen;
             }
@@ -63,15 +79,15 @@ namespace SI_Zad_1.Algorithm
 
         public Specimen[] Crossover(Specimen[] population)
         {
-            var stack = new Stack<Specimen>(population);
             var newPopulation = new List<Specimen>();
+            var stack = new Stack<Specimen>(population);
             while (stack.Count > 0)
             {
                 var parent1 = stack.Pop();
                 var parent2 = stack.Pop();
                 var rand = new Random();
                 var randomNumber = rand.NextDouble();
-                if (randomNumber <= CrossProb)
+                if (randomNumber <= Config.CrossProb)
                 {
                     var crossover = new CrossoverPmx(parent1, parent2, _data);
                     var (child1, child2) = crossover.GetChildren();
@@ -90,14 +106,12 @@ namespace SI_Zad_1.Algorithm
         
         public void Mutation(Specimen[] population)
         {
-            WriteLine("Mutation ----------------------------------------------");
             var rand = new Random();
             foreach (var specimen in population)
             {
                 var randomNumber = rand.NextDouble();
-                if (randomNumber <= MutationProb)
+                if (randomNumber <= Config.MutationProb)
                 {
-                    WriteLine("Mutation");
                     specimen.Mutate();
                 }
             }

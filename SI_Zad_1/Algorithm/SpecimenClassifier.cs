@@ -15,7 +15,7 @@ namespace SI_Zad_1.Algorithm
         public double CalculateSpecimenValue(Specimen specimen)
         {
             var totalProfit = CalculateTotalItemsProfit(specimen.ItemsSequence);
-            var totalTime = CalculateTotalTime(specimen.CitiesIndexSequence, specimen.ItemsSequence);
+            var totalTime = CalculateTotalTime(specimen);
 
             return totalProfit - totalTime;
         }
@@ -25,47 +25,41 @@ namespace SI_Zad_1.Algorithm
             return itemsSequence.Where(item => item != null).Sum(item => item.Profit);
         }
         
-        private double CalculateTotalTime(IReadOnlyList<int> citiesIndexSequence, IReadOnlyList<Item> itemsSequence)
+        private double CalculateTotalTime(Specimen specimen)
         {
+            var citiesIndexSequence = specimen.CitiesIndexSequence;
+            var knapsackWeightSequence = specimen.KnapsackWeightSequence;
             var totalTime = 0d;
 
-            for (var i = 0; i < citiesIndexSequence.Count - 1; i++)
+            for (var i = 0; i < citiesIndexSequence.Length - 1; i++)
             {
                 var currCityIndex = citiesIndexSequence[i];
                 var nextCityIndex = citiesIndexSequence[i + 1];
+                var currKnapsackWeight = knapsackWeightSequence[i];
 
-                var time = CalculateTime(currCityIndex, nextCityIndex, itemsSequence);
+                var time = CalculateTime(currCityIndex, nextCityIndex, currKnapsackWeight);
                 totalTime += time;
             }
 
-            var lastCityIndex = citiesIndexSequence[citiesIndexSequence.Count - 1];
+            var lastCityIndex = citiesIndexSequence[citiesIndexSequence.Length - 1];
             var firstCityIndex = citiesIndexSequence[0];
-            var returnTime = CalculateTime(lastCityIndex, firstCityIndex, itemsSequence);
+            var finalKnapsackWeight = knapsackWeightSequence[citiesIndexSequence.Length - 1];
+            var returnTime = CalculateTime(lastCityIndex, firstCityIndex, finalKnapsackWeight);
             totalTime += returnTime;
 
             return totalTime;
         }
         
-        private double CalculateTime(int firstCityIndex, int secondCityIndex, IReadOnlyList<Item> itemsSequence)
+        private double CalculateTime(int firstCityIndex, int secondCityIndex, int currKnapsackWeight)
         {
             var distance = Data.DistanceMatrix[firstCityIndex - 1, secondCityIndex - 1];
-            var speed = CalculateSpeed(firstCityIndex, itemsSequence);
+            var speed = CalculateSpeed(firstCityIndex, currKnapsackWeight);
             return distance / speed;
         }
         
-        private double CalculateSpeed(int cityIndex, IReadOnlyList<Item> itemSequence)
+        private double CalculateSpeed(int cityIndex, int currKnapsackWeight)
         {
-            var currItemsWeight = 0;
-            for (var i = 0; i < cityIndex; i++)
-            {
-                var item = itemSequence[i];
-                if (item != null)
-                {
-                    currItemsWeight += item.Weight;
-                }
-            }
-
-            return Data.MaxSpeed - currItemsWeight * ((Data.MaxSpeed - Data.MinSpeed) / Data.CapacityOfKnapsack);
+            return Data.MaxSpeed - currKnapsackWeight * ((Data.MaxSpeed - Data.MinSpeed) / Data.CapacityOfKnapsack);
         }
     }
 }

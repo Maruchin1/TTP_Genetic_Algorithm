@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +14,32 @@ namespace SI_Zad_1.Algorithm
 
         public Item[] ItemsSequence { get; set; }
 
+        public int[] KnapsackWeightSequence { get; set; }
+
         public double Value { get; set; }
 
         public Specimen(Data data, int[] citiesIndexSequence)
         {
             Data = data;
             CitiesIndexSequence = citiesIndexSequence;
-            ItemsSequence = MakeItemsSequence();
+            ItemsSequence = new Item[CitiesIndexSequence.Length];
+            CheckIsSpecimenCorrect();
+            KnapsackWeightSequence = new int[CitiesIndexSequence.Length];
+            MakeItemsSequence();
         }
 
+        private void CheckIsSpecimenCorrect()
+        {
+            foreach (var index in CitiesIndexSequence)
+            {
+                var itemCount = CitiesIndexSequence.Count(otherIndex => otherIndex == index);
+                if (itemCount > 1)
+                {
+                    throw new Exception("CitiesIndexSequence contains duplicates");
+                }
+            }
+        }
+        
         public void Mutate()
         {
             var possibleValues = Enumerable.Range(0, CitiesIndexSequence.Length).ToList();
@@ -31,9 +49,6 @@ namespace SI_Zad_1.Algorithm
             var temp = CitiesIndexSequence[firstIndexToSwap];
             CitiesIndexSequence[firstIndexToSwap] = CitiesIndexSequence[secondIndexToSwap];
             CitiesIndexSequence[secondIndexToSwap] = temp;
-            
-            WriteLine("Specimen after mutation:");
-            WriteLine(ToString());
         }
 
         private int GetRandomValue(IList<int> possibleValues)
@@ -45,31 +60,40 @@ namespace SI_Zad_1.Algorithm
             return randomValue;
         }
         
-        private Item[] MakeItemsSequence()
+        private void MakeItemsSequence()
         {
-            var itemsSequence = new Item[CitiesIndexSequence.Length];
             var knapsackItemsWeight = 0;
             for (var i = 0; i < CitiesIndexSequence.Length; i++)
             {
                 var cityIndex = CitiesIndexSequence[i];
-                var itemsInCity = Data.Items.Where(item => item.CityNumber == cityIndex).ToList();
-                if (itemsInCity.Count > 0)
+                var itemsInCity = Data.Items.Where(item => item.CityNumber == cityIndex).ToArray();
+                if (itemsInCity.Length > 0)
                 {
-                    var pickedItem = FindBiggestValueItem(itemsInCity);
-                    if (knapsackItemsWeight + pickedItem.Weight <= Data.CapacityOfKnapsack)
+                    var pickedItem = FindBiggestValueItem(itemsInCity, knapsackItemsWeight);
+                    if (pickedItem != null)
                     {
-                        itemsSequence[i] = pickedItem;
+                        ItemsSequence[i] = pickedItem;
                         knapsackItemsWeight += pickedItem.Weight;
-                    }   
+                    }
                 }
+                KnapsackWeightSequence[i] = knapsackItemsWeight;
             }
-
-            return itemsSequence;
         }
 
-        private Item FindBiggestValueItem(IEnumerable<Item> items)
+        private Item FindBiggestValueItem(Item[] items, int knapsackItemsWeight)
         {
-            return items.OrderByDescending(item => item.Profit).First();
+            Item pickedItem = null;
+            var stack = new Stack<Item>(items.OrderByDescending(item => item.Profit).ToArray());
+            while (stack.Count > 0 && pickedItem == null)
+            {
+                var nextItem = stack.Pop();
+                if (knapsackItemsWeight + nextItem.Weight <= Data.CapacityOfKnapsack)
+                {
+                    pickedItem = nextItem;
+                }
+            }
+            
+            return pickedItem;
         }
 
         private Item FindSmallestWeightItem(IEnumerable<Item> items)

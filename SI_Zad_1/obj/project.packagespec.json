@@ -1,12 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "D:\\Studia\\6 semestr\\SI\\Cw 1\\TTP_Genetic_Algorithm\\SI_Zad_1\\SI_Zad_1.csproj",
+    "projectUniqueName": "C:\\Users\\Marcin\\Desktop\\Studia\\TTP_Genetic_Algorithm\\SI_Zad_1\\SI_Zad_1.csproj",
     "projectName": "SI_Zad_1",
-    "projectPath": "D:\\Studia\\6 semestr\\SI\\Cw 1\\TTP_Genetic_Algorithm\\SI_Zad_1\\SI_Zad_1.csproj",
-    "outputPath": "D:\\Studia\\6 semestr\\SI\\Cw 1\\TTP_Genetic_Algorithm\\SI_Zad_1\\obj\\",
+    "projectPath": "C:\\Users\\Marcin\\Desktop\\Studia\\TTP_Genetic_Algorithm\\SI_Zad_1\\SI_Zad_1.csproj",
+    "outputPath": "C:\\Users\\Marcin\\Desktop\\Studia\\TTP_Genetic_Algorithm\\SI_Zad_1\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
