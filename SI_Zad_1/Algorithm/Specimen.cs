@@ -51,6 +51,30 @@ namespace SI_Zad_1.Algorithm
             CitiesIndexSequence[secondIndexToSwap] = temp;
         }
 
+        public void Mutate2()
+        {
+            var possibleValues = Enumerable.Range(0, CitiesIndexSequence.Length).ToList();
+            var firstIndexToSwap = GetRandomValue(possibleValues);
+            var secondIndexToSwap = GetRandomValue(possibleValues);
+
+            if (firstIndexToSwap > secondIndexToSwap)
+            {
+                var temp = secondIndexToSwap;
+                secondIndexToSwap = firstIndexToSwap;
+                firstIndexToSwap = temp;
+            }
+
+            var original = new List<int>(CitiesIndexSequence);
+            var tempSection = original.GetRange(firstIndexToSwap, secondIndexToSwap - firstIndexToSwap + 1);
+            tempSection.Reverse();
+
+            for (var i = firstIndexToSwap; i <= secondIndexToSwap; i++)
+            {
+                CitiesIndexSequence[i] = tempSection[0];
+                tempSection.RemoveAt(0);
+            }
+        }
+        
         private int GetRandomValue(IList<int> possibleValues)
         {
             var rand = new Random();

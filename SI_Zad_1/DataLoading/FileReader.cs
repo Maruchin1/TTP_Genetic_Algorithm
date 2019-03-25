@@ -14,7 +14,7 @@ namespace SI_Zad_1.DataLoading
             string data = null;
             try
             {
-                sr = new StreamReader(fileName);
+                sr = new StreamReader(Directory.GetCurrentDirectory() + @"\testData\" + fileName);
                 data = sr.ReadToEnd();
             }
             catch (Exception e)
@@ -26,7 +26,6 @@ namespace SI_Zad_1.DataLoading
             {
                 sr?.Close();
             }
-            WriteLine($"data:\n{data}");
             return data;
         }
     }

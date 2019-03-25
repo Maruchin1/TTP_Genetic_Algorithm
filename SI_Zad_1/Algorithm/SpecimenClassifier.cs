@@ -19,6 +19,11 @@ namespace SI_Zad_1.Algorithm
 
             return totalProfit - totalTime;
         }
+
+        public long TotalItemsWeight(Specimen specimen)
+        {
+            return specimen.ItemsSequence.Where(item => item != null).Sum(item => item.Weight);
+        }
         
         private long CalculateTotalItemsProfit(IEnumerable<Item> itemsSequence)
         {

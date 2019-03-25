@@ -10,6 +10,8 @@ namespace SI_Zad_1.Algorithm
         public double CoordX { get; set; }
         public double CoordY { get; set; }
 
+        public bool Visited { get; set; }
+
         public override string ToString()
         {
             var builder = new StringBuilder();

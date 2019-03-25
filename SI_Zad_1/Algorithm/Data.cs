@@ -25,23 +25,23 @@ namespace SI_Zad_1.Algorithm
 
         }
 
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-            builder.AppendLine("Cities:");
-            foreach (var city in Cities)
-            {
-                builder.AppendLine($"- {city}");
-            }
-            builder.AppendLine("Items:");
-            foreach (var item in Items)
-            {
-                builder.AppendLine($"- {item}");
-            }
-            builder.Append("Distance matrix:\n");
-            builder.Append(DistanceMatrixBuilder.MatrixToString(DistanceMatrix));
-
-            return builder.ToString();
-        }
+//        public override string ToString()
+//        {
+//            var builder = new StringBuilder();
+//            builder.AppendLine("Cities:");
+//            foreach (var city in Cities)
+//            {
+//                builder.AppendLine($"- {city}");
+//            }
+//            builder.AppendLine("Items:");
+//            foreach (var item in Items)
+//            {
+//                builder.AppendLine($"- {item}");
+//            }
+//            builder.Append("Distance matrix:\n");
+//            builder.Append(DistanceMatrixBuilder.MatrixToString(DistanceMatrix));
+//
+//            return builder.ToString();
+//        }
     }
 }
